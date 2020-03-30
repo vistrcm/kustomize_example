@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kust-test
+spec:
+  selector:
+    matchLabels:
+      app: kust-test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kust-test
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: [ "/bin/sh", "-c", "env" ]
+          envFrom:  # use environment variables from the configMap
+            - configMapRef:
+                name: kust-config
+      restartPolicy: Never
