@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base
+
+patchesStrategicMerge:
+  - configMap.yaml          # overwrite configuration
+  - increase_replicas.yaml  # increase replicas for  kust-test deployment
+
+namePrefix: prod-
+
+# set common labels
+commonLabels:
+  stage: prod

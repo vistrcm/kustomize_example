@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kust-config
+
+# override LOG_LEVEL value
+data:
+  LOG_LEVEL: debug
